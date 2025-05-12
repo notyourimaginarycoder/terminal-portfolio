@@ -67,7 +67,12 @@ const commandMap: Record<string, { description: string; usage?: string[] }> = {
   },
   open: {
     description: 'open an external site.',
-    usage: ['open github', 'open portfolio', 'open terminal-portfolio'],
+    usage: [
+      'open github',
+      'open portfolio',
+      'open terminal-portfolio',
+      'open stackdew-valley',
+    ],
   },
   ping: {
     description: 'ping a remote server.',
@@ -107,7 +112,10 @@ const commandMap: Record<string, { description: string; usage?: string[] }> = {
   },
 }
 
-const projectMetadata: Record<string, { title: string; description: string; link?: string }> = {
+const projectMetadata: Record<
+  string,
+  { title: string; description: string; link?: string }
+> = {
   'portfolio.ts': {
     title: 'portfolio (unfinished)',
     description: 'a basic portfolio - built with typescript',
@@ -198,7 +206,7 @@ export const getCommandOutput = (cmd: string): string => {
           return `too high! try again`
         }
       }
-      return 'Guess a number between 1 and 100.'
+      return 'guess a number between 1 and 100.'
 
     case 'greet':
       const hour = new Date().getHours()
