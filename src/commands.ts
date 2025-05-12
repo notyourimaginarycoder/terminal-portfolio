@@ -170,7 +170,7 @@ export const getCommandOutput = (cmd: string): string => {
     case 'cat':
       if (arg === 'about.txt')
         return 'this is my terminal-based portfolio - created with css, html, typescript'
-      if (arg === 'contact.txt') return 'contact me via email or github'
+      if (arg === 'contact.txt') return 'contact me via github'
       if (arg === 'hidden.txt') return 'nice! you found my hidden text file'
       return 'file not found'
 
@@ -307,9 +307,11 @@ export const getCommandOutput = (cmd: string): string => {
         .join('\n\n')
 
     case 'reboot':
+      window.location.reload()
       return 'rebooting system... terminal will reload shortly'
 
     case 'reload':
+      window.location.reload()
       return 'reloading terminal...'
 
     case 'rm':
@@ -322,6 +324,7 @@ export const getCommandOutput = (cmd: string): string => {
       return `'${arg}' not found in current directory`
 
     case 'shutdown':
+      window.close()
       return 'shutting down system...'
 
     case 'skills':
