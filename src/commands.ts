@@ -128,7 +128,7 @@ const projectMetadata: Record<
   },
   'stackdew-valley.js': {
     title: 'stackdew-valley',
-    description: 'a 2d farming simulator with a twist - built with phaser',
+    description: 'a 2d farming simulator with a twist - built with phaser and firebase',
     link: 'https://github.com/notyourimaginarycoder/stackdew-valley',
   },
 }
