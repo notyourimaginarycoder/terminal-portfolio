@@ -109,14 +109,19 @@ const commandMap: Record<string, { description: string; usage?: string[] }> = {
 
 const projectMetadata: Record<string, { title: string; description: string; link?: string }> = {
   'portfolio.ts': {
-    title: 'portfolio',
-    description: 'a basic portfolio built with typescript',
+    title: 'portfolio (unfinished)',
+    description: 'a basic portfolio - built with typescript',
     link: 'https://github.com/notyourimaginarycoder/portfolio',
   },
   'terminal-portfolio.ts': {
     title: 'terminal-portfolio',
-    description: 'a terminal styled portfolio built with typescript',
+    description: 'a terminal styled portfolio - built with typescript',
     link: 'https://github.com/notyourimaginarycoder/terminal-portfolio',
+  },
+  'stackdew-valley.js': {
+    title: 'stackdew-valley',
+    description: 'a 2d farming simulator with a twist - built with phaser',
+    link: 'https://github.com/notyourimaginarycoder/stackdew-valley',
   },
 }
 
