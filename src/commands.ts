@@ -1,6 +1,14 @@
+let currentPath = '/'
+let commandHistory: string[] = []
+const terminalVersion = '1.0.0'
+const systemStartTime = new Date().getTime()
+const aliases: Record<string, string> = {}
+const randomNumber = Math.floor(Math.random() * 100) + 1
+let attempts = 0
+
 const fileSystem: Record<string, string[]> = {
   '/': ['about.txt', 'projects', 'contact.txt'],
-  '/projects': ['portfolio.ts', 'api-tool.py'],
+  '/projects': ['portfolio.ts', 'terminal-portfolio.ts', 'stackdew-valley.js'],
   '/secret': ['hidden.txt'],
 }
 
@@ -99,13 +107,18 @@ const commandMap: Record<string, { description: string; usage?: string[] }> = {
   },
 }
 
-let currentPath = '/'
-let commandHistory: string[] = []
-const terminalVersion = '1.0.0'
-const systemStartTime = new Date().getTime()
-const aliases: Record<string, string> = {}
-const randomNumber = Math.floor(Math.random() * 100) + 1
-let attempts = 0
+const projectMetadata: Record<string, { title: string; description: string; link?: string }> = {
+  'portfolio.ts': {
+    title: 'portfolio',
+    description: 'a basic portfolio built with typescript',
+    link: 'https://github.com/notyourimaginarycoder/portfolio',
+  },
+  'terminal-portfolio.ts': {
+    title: 'terminal-portfolio',
+    description: 'a terminal styled portfolio built with typescript',
+    link: 'https://github.com/notyourimaginarycoder/terminal-portfolio',
+  },
+}
 
 export const getCommandOutput = (cmd: string): string => {
   const input = cmd.trim().toLowerCase()
@@ -264,7 +277,21 @@ export const getCommandOutput = (cmd: string): string => {
       return 'Please provide a host to ping.'
 
     case 'projects':
-      return '1. terminal-portfolio'
+      const files = fileSystem['/projects']
+      if (!files || files.length === 0) return 'no projects found'
+
+      return files
+        .map((file, index) => {
+          const meta = projectMetadata[file]
+          if (meta) {
+            return `${index + 1}. ${meta.title}\n   ${meta.description}${
+              meta.link ? `\n   → ${meta.link}` : ''
+            }`
+          } else {
+            return `${index + 1}. ${file.replace(/\.(ts|js|py|txt)$/, '')}`
+          }
+        })
+        .join('\n\n')
 
     case 'reboot':
       return 'rebooting system... terminal will reload shortly'
