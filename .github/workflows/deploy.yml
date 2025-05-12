@@ -1,0 +1,34 @@
+name: deploy portfolio to github page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v3
+
+      - name: setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build with vite bundler
+        run: npm run build
+
+      - name: deploy to github pages repo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.DEPLOY_TOKEN }}
+          external_repository: notyourimaginarycoder/notyourimaginarycoder.github.io
+          publish_branch: main
+          publish_dir: ./dist
+
