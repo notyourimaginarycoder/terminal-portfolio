@@ -287,7 +287,7 @@ export const getCommandOutput = (cmd: string): string => {
       if (arg) {
         return `Pinging ${arg}... Response time: 50ms`
       }
-      return 'Please provide a host to ping.'
+      return 'please provide a host to ping.'
 
     case 'projects':
       const files = fileSystem['/projects']
