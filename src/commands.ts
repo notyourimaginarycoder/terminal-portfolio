@@ -276,7 +276,7 @@ export const getCommandOutput = (cmd: string): string => {
       }
       if (arg === 'stackdew-valley') {
         window.open(
-          'https://github.com/notyourimaginarycoder/stackdew-valley',
+          'https://github.com/stackdew/stackdew-valley',
           '_blank'
         )
         return 'opening source code for stackdew-valley...'
